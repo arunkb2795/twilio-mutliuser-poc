@@ -1,0 +1,19 @@
+.flipCamera {
+  width: 100%;
+  bottom: 90px;
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+@media only screen and (min-width: 601px) {
+  .flipCamera {
+    width: 100%;
+    bottom: 100px;
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 20px;
+  }
+}

@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import TwilioMeetingPage from "./TwilioMeetingPage";
+import SamplePage from "./SamplePage";
+import useConnectionOptions from "./Twilio/Hooks/useConnectionOptions";
+import { VideoProvider } from "./Twilio/VideoProvider";
 
-function App() {
+export default function App() {
+  const connectionOptions = useConnectionOptions();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <VideoProvider
+      connectionOptions={connectionOptions}
+      onError={(err) => console.log(err)}
+    >
+      <TwilioMeetingPage />
+      {/* <SamplePage /> */}
+    </VideoProvider>
   );
 }
-
-export default App;
