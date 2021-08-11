@@ -136,7 +136,7 @@ export default function MainParticipantInfo({ participant, children }) {
             }}
           >
             <UserIcon width={30} height={30} fill="#fff" />
-            <p>{participant.identity}</p>
+            <p>{participant && participant.identity}</p>
           </div>
         </div>
       )}

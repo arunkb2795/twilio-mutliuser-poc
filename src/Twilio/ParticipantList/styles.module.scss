@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 250px;
+  // width: 250px;
   height: 150px;
   object-fit: cover;
   background-color: black;
@@ -12,5 +12,25 @@
   // position: absolute;
   // top: 0;
   // right: 0;
-  // margin: 20px;
+  margin: 10px;
 }
+
+.dupe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  object-fit: cover;
+  background-color: black;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px;
+}
+// li {
+//   width: auto !important;
+// }

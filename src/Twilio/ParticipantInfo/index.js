@@ -102,7 +102,7 @@ const useStyles = makeStyles((theme) =>
       },
     },
     hideParticipant: {
-      display: "block",
+      display: "none",
     },
     cursorPointer: {
       cursor: "pointer",
@@ -151,7 +151,10 @@ export default function ParticipantInfo({
               }}
             >
               <UserIcon width={30} height={30} fill="#fff" />
-              <p>{participant.identity}</p>
+              <p>
+                {participant.identity}
+                {isLocalParticipant && " (You)"}
+              </p>
             </div>
           </div>
         )}

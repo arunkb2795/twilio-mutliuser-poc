@@ -7,14 +7,12 @@ export default function useMainParticipant() {
   const participants = useParticipants();
   const dominantSpeaker = useDominantSpeaker();
   const { room } = useVideoContext();
-  const localParticipant = room?.localParticipant;
+  // const localParticipant = room?.localParticipant;
   console.log({ dominantSpeaker });
   // The participant that is returned is displayed in the main video area. Changing the order of the following
   // variables will change the how the main speaker is determined.
   return (
-    dominantSpeaker ||
-    selectedParticipant ||
-    participants[0] ||
-    localParticipant
+    dominantSpeaker || selectedParticipant || participants[0]
+    // localParticipant
   );
 }

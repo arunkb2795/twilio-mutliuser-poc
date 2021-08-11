@@ -19,83 +19,72 @@ export default function ParticipantList() {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 10,
+      items: 6,
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 7,
+      items: 5,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 2,
+      items: 4,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 1,
+      items: 2,
     },
   };
 
   // if (participants.length === 0) return null; // Don't render this component if there are no remote participants.
-  return (
-    // <div
-    //   id="hai"
-    //   style={{ position: "absolute", top: 0, width: "400px", height: "200px" }}
-    // >
-    //   <Carousel responsive={responsive} arrows>
-    //     {participants.map((participant) => {
-    //       const isSelected = participant === selectedParticipant;
-    //       const hideParticipant =
-    //         participant === mainParticipant && !isSelected;
-    //       return (
-    //         <div>
-    //           <Participant
-    //             key={participant.sid}
-    //             participant={participant}
-    //             isSelected={participant === selectedParticipant}
-    //             onClick={() => setSelectedParticipant(participant)}
-    //             hideParticipant={hideParticipant}
-    //           />
-    //         </div>
-    //       );
-    //     })}
-    //     <Participant participant={localParticipant} isLocalParticipant={true} />
-    //   </Carousel>
-
-    <div>
-      <div
-        id="hhhh"
-        style={{
-          // display: "flex",
-          position: "absolute",
-          top: 0,
-          width: "100%",
-        }}
-      >
-        <Carousel responsive={responsive}>
-          <div className={styles.canvas2}>
-            <Participant
-              participant={localParticipant}
-              isLocalParticipant={true}
-            />
-          </div>
-          {participants.map((participant) => {
-            const isSelected = participant === selectedParticipant;
-            const hideParticipant =
-              participant === mainParticipant && !isSelected;
-            return (
-              <div className={styles.canvas2}>
-                <Participant
-                  key={participant.sid}
-                  participant={participant}
-                  isSelected={participant === selectedParticipant}
-                  onClick={() => setSelectedParticipant(participant)}
-                  hideParticipant={hideParticipant}
-                />
-              </div>
-            );
-          })}
-        </Carousel>
+  if (participants.length < 2) {
+    return (
+      <div className={styles.dupe}>
+        <Participant
+          participant={localParticipant}
+          isSelected={true}
+          isLocalParticipant={true}
+        />
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <div
+          id="hhhh"
+          style={{
+            // display: "flex",
+            position: "absolute",
+            top: 0,
+            width: "100%",
+          }}
+        >
+          <Carousel responsive={responsive} arrows>
+            <div className={styles.canvas2}>
+              <Participant
+                participant={localParticipant}
+                isLocalParticipant={true}
+              />
+            </div>
+            {participants.map((participant) => {
+              const isSelected = participant === selectedParticipant;
+              const hideParticipant =
+                participant === mainParticipant && !isSelected;
+              console.log({ participant, hideParticipant });
+              return !hideParticipant ? (
+                <div className={styles.canvas2}>
+                  <Participant
+                    key={participant.sid}
+                    participant={participant}
+                    isSelected={participant === selectedParticipant}
+                    onClick={() => setSelectedParticipant(participant)}
+                    hideParticipant={hideParticipant}
+                  />
+                </div>
+              ) : null;
+            })}
+          </Carousel>
+        </div>
+      </div>
+    );
+  }
 }
